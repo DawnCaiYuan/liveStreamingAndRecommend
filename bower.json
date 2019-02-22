@@ -1,0 +1,20 @@
+{
+  "name": "live-crawler",
+  "description": "",
+  "main": "",
+  "authors": [
+    "TCY <...@qq.com>"
+  ],
+  "license": "MIT",
+  "homepage": "http://ade.cs.hust.edu.cn/",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7"
+  }
+}
