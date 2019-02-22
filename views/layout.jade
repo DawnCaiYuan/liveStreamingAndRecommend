@@ -1,0 +1,30 @@
+doctype html
+html
+    head
+        title 直播整合
+        //- <meta> 元素可提供有关页面的元信息（meta-information），比如针对搜索引擎和更新频度的描述和关键词。
+        meta(name='renderer', content='webkit')
+        link(rel='stylesheet', href='/bower_components/bootstrap/dist/css/bootstrap.min.css')
+        link(rel='stylesheet', href='/bower_components/bootstrap-sidebar/css/simple-sidebar.css')
+        link(rel='stylesheet', href='/stylesheets/style.css')
+        script.
+            var _hmt = _hmt || [];
+            (function() {
+                var hm = document.createElement("script");
+                hm.src = "https://hm.baidu.com/hm.js?6ec333cfb648b319f347fe38658ccc92";
+                var s = document.getElementsByTagName("script")[0];
+                s.parentNode.insertBefore(hm, s);
+            })();
+
+    body
+        //- 直接 # 就是指div，因为div可以省略
+        include sidebar.jade
+        block content
+        .bot.text-right
+            | @Copyright - 版权 -&nbsp;
+            a(href="http://www.miitbeian.gov.cn/") 备号
+        script(src='/bower_components/jquery/dist/jquery.min.js')
+        script(src='/bower_components/bootstrap/dist/js/bootstrap.min.js')
+        script(src='/javascripts/index.js')
+
+

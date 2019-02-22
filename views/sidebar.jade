@@ -1,0 +1,55 @@
+-
+    var categoryList = [
+        {
+            name: '英雄联盟',
+            path: '/lol'
+        }, {
+            name: '炉石传说',
+            path: '/hearthstone'
+        }, {
+            name: '王者荣耀',
+            path: 'kingglory'
+        }, {
+            name: '绝地求生',
+            path: 'pubg'
+        }, {
+            name: '守望先锋',
+            path: '/overwatch'
+        }, {
+            name: 'DOTA2',
+            path: '/dota2'
+        }, {
+            name: '魔兽世界',
+            path: '/wow'
+        }, {
+            name: 'CSGO',
+            path: '/CSGO'
+        }, {
+            name: '穿越火线',
+            path: '/cf'
+        }, {
+            name: 'DNF',
+            path: '/dnf'
+        }, {
+            name: '美女',
+            path: '/beauty'
+        }
+    ];
+//- .navbar-fixed-top
+nav.navbar.navbar-inverse(role='navigation')
+    .container-fluid
+    .navbar-header
+        a.navbar-brand(href='#') ADE实验室
+    div
+        ul.nav.navbar-nav.navbar-left
+            each item in categoryList
+                if category && category.path === item.path.substring(1)
+                    li
+                        a.active(href='#{item.path}')= item.name
+                else
+                    li
+                        a(href='#{item.path}')= item.name
+            li
+                a(href='/author') 关于本站
+            li
+                a(href='http://DESKTOP-R7DRRAL:6006',target="_blank") 推荐细节
