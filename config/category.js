@@ -1,7 +1,7 @@
 module.exports = {
     'lol': {
         name: '英雄联盟',
-        panda: 'http://www.panda.tv/cate/lol',
+        //panda: 'http://www.panda.tv/cate/lol',
         douyu: 'https://www.douyu.com/gapi/rkc/directory/2_1/1',
         //douyu: 'https://www.douyu.com/directory/game/LOL',
         zhanqi: 'https://www.zhanqi.tv/api/static/v2.1/game/live/6/30/1.json',
@@ -11,7 +11,7 @@ module.exports = {
     },
     'hearthstone': {
         name: '炉石传说',
-        panda: 'http://www.panda.tv/cate/hearthstone',
+        //panda: 'http://www.panda.tv/cate/hearthstone',
         douyu: 'https://www.douyu.com/gapi/rkc/directory/2_2/1',        
         // douyu: 'https://www.douyu.com/directory/game/How',
         zhanqi: 'https://www.zhanqi.tv/api/static/v2.1/game/live/9/30/1.json',
@@ -21,7 +21,7 @@ module.exports = {
     },
     'kingglory': {
         name: '王者荣耀',
-        panda: 'http://www.panda.tv/cate/kingglory',
+        //panda: 'http://www.panda.tv/cate/kingglory',
         douyu: 'https://www.douyu.com/gapi/rkc/directory/2_181/1',
         // douyu: 'https://www.douyu.com/directory/game/wzry',
         zhanqi: 'https://www.zhanqi.tv/api/static/v2.1/game/live/115/30/1.json',
@@ -31,7 +31,7 @@ module.exports = {
     },
     'pubg': {
         name: '绝地求生',
-        panda: 'https://www.panda.tv/cate/pubg',
+        //panda: 'https://www.panda.tv/cate/pubg',
         douyu: 'https://www.douyu.com/gapi/rkc/directory/1_15/1',
         // douyu: 'https://www.douyu.com/directory/game/jdqs',
         zhanqi: 'https://www.zhanqi.tv/api/static/v2.1/game/live/106/30/1.json',
@@ -41,7 +41,7 @@ module.exports = {
     },
     'overwatch': {
         name: '守望先锋',
-        panda: 'http://www.panda.tv/cate/overwatch',
+        //panda: 'http://www.panda.tv/cate/overwatch',
         douyu: 'https://www.douyu.com/gapi/rkc/directory/2_148/1',
         // douyu: 'https://www.douyu.com/directory/game/Overwatch',
         zhanqi: 'https://www.zhanqi.tv/api/static/v2.1/game/live/82/30/1.json',
@@ -51,7 +51,7 @@ module.exports = {
     },
     'dota2': {
         name: 'DOTA2',
-        panda: 'http://www.panda.tv/cate/dota2',
+        //panda: 'http://www.panda.tv/cate/dota2',
         douyu: 'https://www.douyu.com/gapi/rkc/directory/2_3/1',
         // douyu: 'https://www.douyu.com/directory/game/DOTA2',
         zhanqi: 'https://www.zhanqi.tv/api/static/v2.1/game/live/10/30/1.json',
@@ -60,7 +60,7 @@ module.exports = {
     },
     'wow': {
         name: '魔兽世界',
-        panda: 'http://www.panda.tv/cate/wow',
+        //panda: 'http://www.panda.tv/cate/wow',
         douyu: 'https://www.douyu.com/gapi/rkc/directory/2_5/1',
         // douyu: 'https://www.douyu.com/directory/game/WOW',
         zhanqi: 'https://www.zhanqi.tv/api/static/v2.1/game/live/8/30/1.json',
@@ -70,7 +70,7 @@ module.exports = {
     },
     'CSGO': {
         name: 'CSGO',
-        panda: 'http://www.panda.tv/cate/csgo',
+        //panda: 'http://www.panda.tv/cate/csgo',
         douyu: 'https://www.douyu.com/gapi/rkc/directory/2_6/1',
         // https://www.douyu.com/directory/game/CSGO',
         huya: 'http://www.huya.com/g/862',
@@ -78,7 +78,7 @@ module.exports = {
     },
     'cf': {
         name: '穿越火线',
-        panda: 'http://www.panda.tv/cate/cf',
+        //panda: 'http://www.panda.tv/cate/cf',
         douyu: 'https://www.douyu.com/gapi/rkc/directory/2_33/1',
         // douyu: 'https://www.douyu.com/directory/game/CF',
         huya: 'http://www.huya.com/g/4',
@@ -87,7 +87,7 @@ module.exports = {
     },
     'dnf': {
         name: 'DNF',
-        panda: 'http://www.panda.tv/cate/dnf',
+        //panda: 'http://www.panda.tv/cate/dnf',
         douyu: 'https://www.douyu.com/gapi/rkc/directory/3_59/1',
         // douyu: 'https://www.douyu.com/directory/game/DNF',
         zhanqi: 'https://www.zhanqi.tv/api/static/v2.1/game/live/22/30/1.json',
@@ -97,7 +97,7 @@ module.exports = {
     },
     'beauty': {
         name: '美女主播',
-        panda: 'http://www.panda.tv/cate/yzdr',
+        //panda: 'http://www.panda.tv/cate/yzdr',
         douyu: 'https://www.douyu.com/gapi/rkc/directory/1_8/1',
         // douyu: 'https://www.douyu.com/directory/game/yz',
         huya: 'http://www.huya.com/g/1663',

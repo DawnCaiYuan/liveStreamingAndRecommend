@@ -66,6 +66,7 @@ app.use(mysession);
 app.get('/login', function(req, res){
   res.sendFile(__dirname + '/views/login.html')
 });
+
 // 登入
 app.post('/login',function(req, res){
   if((req.body.username == 'admin' && req.body.pwd == '斗鱼') || (req.body.username == 'huster' && req.body.pwd == '斗鱼')|| (req.body.username == 'huster2' && req.body.pwd == '斗鱼')){
