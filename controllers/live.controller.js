@@ -24,6 +24,9 @@ exports.get = function(req, res, next) {
     let liveJson = [];
     let recommendJson = [];
     let recommendReason = []; //推荐理由一共四个
+    let averHot = 0;
+    let sumHot = 0;
+    let rollContent = "";
     let myContent = '';
     if (!category) {
         return next();
@@ -101,8 +104,9 @@ exports.get = function(req, res, next) {
                         }
                         else{
                             // 最后一个切分应该是[推荐理由],类型为string
-                            // 先将单引号转为双引号才能解析
-                            v = v.replace(/\'/g,'\"');
+                            // // 先将单引号转为双引号才能解析
+                            // var reg = new RegExp( '\'' , "g" )
+                            // v = v.replace(reg,'\"');
                             var b = JSON.parse(v);
                             for (var i=0;i<4;i++)
                             {
@@ -126,7 +130,15 @@ exports.get = function(req, res, next) {
                 // v当前内容,i当前下标
                 recommendJson[i].rReason = recommendReason[i];
             });
-            // console.log(recommendJson)
+            // 最后处理一下滚动部分内容
+            // 直播类型 + 当前直播类别总热度平均热度
+            liveJson.slice(0,150).forEach(function(v,i,a){
+                // v当前内容,i当前下标
+                sumHot = sumHot + parseInt(v.audienceNumber);
+            });
+            averHot = sumHot/150;
+            // 构造滚动内容
+            rollContent = "当前所处类别：" + category.name + " ；该类别当前总热度为：" + sumHot.toString() + "；该类别平均热度为：" + averHot.toString();
         }, 2000);})
         // 将这些爬取数据传给/index 界面
         .then(() => {setTimeout(() => {
@@ -140,7 +152,7 @@ exports.get = function(req, res, next) {
                 liveJson: liveJson.slice(0, 150),
                 uName : uName,
                 recommendJson : recommendJson,
-                recommendReason : recommendReason,
+                rollContent : rollContent,
             })
         }, 2000);})
         .catch(next);
@@ -179,7 +191,7 @@ exports.getOne = function(req, res, next) {
                 isLogin : isLogin,
                 uName : uName,
                 recommendJson : recommendJson,
-                recommendReason : recommendReason,
+                rollContent : "滚动部分",
             });
         })
         .catch(next);
