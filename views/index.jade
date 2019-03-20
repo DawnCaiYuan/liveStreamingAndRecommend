@@ -3,7 +3,7 @@ extends layout
 block content
     -
         var platformList = {
-            panda: '熊猫',
+            //panda: '熊猫',
             douyu: '斗鱼',
             zhanqi: '战旗',
             huya: '虎牙',
@@ -19,6 +19,9 @@ block content
         var platform = platformList[category.platform];
     //- 这个 - 代表下面代码需要转义
     #page-content-wrapper
+        //- 字幕滚动
+        .box
+            p.roll= rollContent
         .header.row
             //- 猜你喜欢
             .col-md-4
@@ -35,7 +38,7 @@ block content
                                 | 所有平台
                             | &nbsp;&nbsp;&nbsp;
                             span.caret
-                        ul.dropdown-menu(aria-labelledby='dLabel', role='menu')
+                        ul.dropdown-menu#dropdown-menu(aria-labelledby='dLabel', role='menu')
                             each name, path in platformList
                                 li(role='presentation')
                                     if platform !== name
@@ -54,14 +57,14 @@ block content
             .col-md-4.dropdown
                 h4.pull-right
                     if !isLogin
-                        a.pull-right(href="/login") 登录
+                        a.login-a.pull-right(href="/login") 登录
                         span.pull-right.glyphicon.glyphicon-user 登录:&nbsp;
                         //- form.pull-right.form-inlile(method='get' action='/login')
                             //- .form-group.form-group-sm.has-feedback
                             //-     input.form-control(placeholder='请输入:用户名/平台', name='uName', value='#{uName || ""}')
                     if isLogin
-                        a.pull-right(href="/logout") 退出登录
-                        p.pull-right.text-success #{uName}&nbsp;
+                        a.login-a.pull-right(href="/logout") 退出登录
+                        p.login-a.pull-right.text-success #{uName}&nbsp;
                         span.pull-right.glyphicon.glyphicon-user 用户名:&nbsp;                    
         //- 这部分测试时使用，查看item中的内容
         //- .row

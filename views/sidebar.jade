@@ -36,20 +36,78 @@
         }
     ];
 //- .navbar-fixed-top
-nav.navbar.navbar-inverse(role='navigation')
+nav.navbar.navbar-inverse.navbar-fixed-top(role='navigation')
     .container-fluid
     .navbar-header
         a.navbar-brand(href='#') ADE实验室
     div
         ul.nav.navbar-nav.navbar-left
             each item in categoryList
-                if category && category.path === item.path.substring(1)
+                if category && category.name === item.name
                     li
                         a.active(href='#{item.path}')= item.name
-                else
+                else  
                     li
                         a(href='#{item.path}')= item.name
             li
                 a(href='/author') 关于本站
             li
                 a(href='http://DESKTOP-R7DRRAL:6006',target="_blank") 推荐细节
+            li
+                a(href='#',data-toggle="modal",data-target="#myModal") 帮助
+
+    //- 帮助界面的模态框
+#myModal.modal.fade(tabindex="-1",role="dialog",aria-labelledby="myModalLabel",aria-hidden="true")
+    .modal-dialog
+        .modal-content
+            .modal-header
+                button.close(type="button", data-dismiss="modal", aria-hidden="true") &times;
+                h4#myModalLabel.modal-title 本站操作手册
+
+            .modal-body 
+                //- 帮助界面主体是一个轮播
+                #myCarousel.carousel.slide
+                    ol.carousel-indicators
+                        li.active(data-target="#myCarousel" data-slide-to="0")
+                        li(data-target="#myCarousel" data-slide-to="1")
+                        li(data-target="#myCarousel" data-slide-to="2")
+                        li(data-target="#myCarousel" data-slide-to="3")
+                        
+                    .carousel-inner
+                        .item.active
+                            img(src='/images/help1.jpg', alt="First slide")
+                            .carousel-caption 登录
+
+                        .item
+                            img(src='/images/help2.jpg', alt="Second slide")
+                            .carousel-caption 导航
+
+                        .item
+                            img(src='/images/help3.jpg', alt="Third slide")
+                            .carousel-caption 搜索
+                        
+                        .item
+                            img(src='/images/help4.jpg', alt="Forth slide")
+                            .carousel-caption 推荐 
+                        
+                    a.left.carousel-control(href="#myCarousel", role="button", data-slide="prev")
+                        span.glyphicon.glyphicon-chevron-left(aria-hidden='true')
+                        span.sr-only Previous
+
+                    a.right.carousel-control(href="#myCarousel", role="button", data-slide="next")
+                        span.glyphicon.glyphicon-chevron-right(aria-hidden='true')
+                        span.sr-only Next
+
+                        
+                        
+            .modal-footer
+                <button type="button" class="btn btn-default" data-dismiss="modal">我知道了</button>
+                //- <button type="button" class="btn btn-primary"> 提交更改 </button>
+
+       
+
+        
+                
+
+
+

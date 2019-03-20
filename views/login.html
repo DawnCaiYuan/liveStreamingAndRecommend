@@ -4,15 +4,59 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
     <style type="text/css">
+        body{  
+
+            
+            margin-top:260PX; 
+            width:100%;  
+            background: url("/images/login_background.png");
+
+        }
+        form{
+            margin-left:auto;  
+            margin-right:auto; 
+            background-color: white;
+            width: 20%;
+            min-width: 180px;
+            padding: 40px 50px;
+            border-radius: 5px; 
+        }
     </style>
 </head>
 
 <body>
     <form action="/login" method="POST">
+        <div class="input-group">
+
+            <span class="input-group-addon" id="basic-addon1"><img src = '/images/user_icon.png'></span>
+            <input id="userName" type="text" class="form-control" placeholder="用户名"
+                aria-describedby="basic-addon1" name = 'username'>
+          
+        </div>
+          
+        <br>
+          
+          <!--下面是密码输入框-->
+        <div class="input-group">
+          
+            <span class="input-group-addon" id="basic-addon1"><img src="/images/live_icon.png"></span>
+          
+            <input id="passWord" type="text" class="form-control" placeholder="平台" 
+                aria-describedby="basic-addon1" name='pwd'>
+          
+        </div>
+          
+        <br>
+          
+          <!--下面是登陆按钮,包括颜色控制-->
+        <input type="submit" style="width:100%; background-color: green;color:white;" class="btn btn-default" value="登&nbsp;&nbsp;&nbsp;陆"/>
+          
+<!--           
         用户名: <input type="text" name="username" /> <br>
         平台: <input type="text" name="pwd" /> <br>
-        <input type="submit" value="登陆" /> <br>
+        <input type="submit" value="登陆" /> <br> -->
     </form>
 </body>
 
