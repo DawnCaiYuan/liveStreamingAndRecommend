@@ -23,6 +23,7 @@ exports.get = function(req, res, next) {
     // let categoryName = category.name;
     let liveJson = [];
     let recommendJson = [];
+    let recommendReason = []; //推荐理由一共四个
     let myContent = '';
     if (!category) {
         return next();
@@ -92,17 +93,40 @@ exports.get = function(req, res, next) {
                 }
                 else{
                     data.toString().split('}').forEach(function(v,i,a){
-                        v = v.toString()+"}";
+                        // {推荐1}{推荐2}{推荐3}{推荐4}[推荐理由]
                         if(i!= 4){
-                            var a = [JSON.parse(v)];
-                            recommendJson = recommendJson.concat(a);
+                            v = v.toString()+"}";
+                            var b = [JSON.parse(v)];
+                            recommendJson = recommendJson.concat(b);
+                        }
+                        else{
+                            // 最后一个切分应该是[推荐理由],类型为string
+                            // 先将单引号转为双引号才能解析
+                            v = v.replace(/\'/g,'\"');
+                            var b = JSON.parse(v);
+                            for (var i=0;i<4;i++)
+                            {
+                                recommendReason = recommendReason.concat("根据您看过的房间号为:"+b.pop()+"的直播间进行推荐");
+                            }
+                            // recommendReason:["理由1","理由1","理由1","理由1"]
+                            // recommendJson: [{'titile':"", "snapshot":""},{},{},{}]
                         }
                     });
                 }
             }
             else{
                 recommendJson = liveJson.slice(0,4);
+                for (var i=0;i<4;i++)
+                {
+                    recommendReason = recommendReason.concat("您还没有登陆");
+                }
             }
+            // 将recomendReason一条一条插入到recommendJson中去
+            recommendJson.forEach(function(v,i,a){
+                // v当前内容,i当前下标
+                recommendJson[i].rReason = recommendReason[i];
+            });
+            // console.log(recommendJson)
         }, 2000);})
         // 将这些爬取数据传给/index 界面
         .then(() => {setTimeout(() => {
@@ -116,6 +140,7 @@ exports.get = function(req, res, next) {
                 liveJson: liveJson.slice(0, 150),
                 uName : uName,
                 recommendJson : recommendJson,
+                recommendReason : recommendReason,
             })
         }, 2000);})
         .catch(next);
@@ -139,6 +164,12 @@ exports.getOne = function(req, res, next) {
     crawler[platform](categoryPath)
         .then((list) => {
             list.sort((o1, o2) => o2.audienceNumber - o1.audienceNumber);
+            var recommendJson = list.slice(0,4);
+            var recommendReason = ["您还没有登陆","您还没有登陆","您还没有登陆","您还没有登陆"];
+            recommendJson.forEach(function(v,i,a){
+                // v当前内容,i当前下标
+                recommendJson[i].rReason = recommendReason[i];
+            });
             res.render('index', {
                 category: Object.assign({
                     path: categoryPath,
@@ -147,7 +178,8 @@ exports.getOne = function(req, res, next) {
                 liveJson: list.slice(0, 150),
                 isLogin : isLogin,
                 uName : uName,
-                recommendJson : list.slice(0,4),
+                recommendJson : recommendJson,
+                recommendReason : recommendReason,
             });
         })
         .catch(next);

@@ -70,7 +70,7 @@ block content
         //- 推荐的四个直播
         .container-fluid.liveList
             each item in recommendJson
-                a.col-lg-3.col-md-4.col-sm-6.ellipsis(href='#{item.url}', target='_blank',title="推荐理由")
+                a.col-lg-3.col-md-4.col-sm-6.ellipsis(href='#{item.url}', target='_blank',title='#{item.rReason}')
                     //- 直播预览图
                     - var num = parseInt(Math.random()*4 + 1, 10)
                     - var tmp ="\"images/"+ category.path + num +".jpg\""
