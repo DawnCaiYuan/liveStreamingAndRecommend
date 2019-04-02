@@ -95,27 +95,37 @@ exports.get = function(req, res, next) {
                     recommendJson = liveJson.slice(0,4);
                 }
                 else{
-                    data.toString().split('}').forEach(function(v,i,a){
-                        // {推荐1}{推荐2}{推荐3}{推荐4}[推荐理由]
-                        if(i!= 4){
-                            v = v.toString()+"}";
-                            var b = [JSON.parse(v)];
-                            recommendJson = recommendJson.concat(b);
-                        }
-                        else{
-                            // 最后一个切分应该是[推荐理由],类型为string
-                            // // 先将单引号转为双引号才能解析
-                            // var reg = new RegExp( '\'' , "g" )
-                            // v = v.replace(reg,'\"');
-                            var b = JSON.parse(v);
-                            for (var i=0;i<4;i++)
-                            {
-                                recommendReason = recommendReason.concat("根据您看过的房间号为:"+b.pop()+"的直播间进行推荐");
+                    try{
+                        data.toString().split('}').forEach(function(v,i,a){
+                            // {推荐1}{推荐2}{推荐3}{推荐4}[推荐理由]
+                            if(i!= 4){
+                                v = v.toString()+"}";
+                                var b = [JSON.parse(v)];
+                                recommendJson = recommendJson.concat(b);
                             }
-                            // recommendReason:["理由1","理由1","理由1","理由1"]
-                            // recommendJson: [{'titile':"", "snapshot":""},{},{},{}]
+                            else{
+                                // 最后一个切分应该是[推荐理由],类型为string
+                                // // 先将单引号转为双引号才能解析
+                                // var reg = new RegExp( '\'' , "g" )
+                                // v = v.replace(reg,'\"');
+                                var b = JSON.parse(v);
+                                for (var i=0;i<4;i++)
+                                {
+                                    recommendReason = recommendReason.concat("根据您看过的房间号为:"+b.pop()+"的直播间进行推荐");
+                                }
+                                // recommendReason:["理由1","理由1","理由1","理由1"]
+                                // recommendJson: [{'titile':"", "snapshot":""},{},{},{}]
+                            }
+                        });
+                    }catch(e){
+                        recommendJson = [];
+                        for (var i=0;i<4;i++)
+                        {
+                            var r = parseInt(Math.random()*100, 10)
+                            recommendJson = recommendJson.concat(liveJson[r]);
+                            recommendReason = recommendReason.concat("根据您最近所看直播推荐");
                         }
-                    });
+                    }
                 }
             }
             else{

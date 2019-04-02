@@ -3,9 +3,9 @@
  */
 
 module.exports = {
-    panda: {
+    /*panda: {
         name: '熊猫',
-    },
+    },*/
     douyu: {
         name: '斗鱼',
     },
