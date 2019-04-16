@@ -1,0 +1,1 @@
+tensorboard --logdir=/home/liveStreamingAndRecommend/controllers/logs/
