@@ -1,0 +1,15 @@
+extends layout
+
+
+block content
+    #page-content-wrapper
+        .header.row
+            .col-md-8
+                a.glyphicon.glyphicon-align-justify#menu-toggle
+        .container-fluid
+            .row
+                each item in allArticle
+                    a.col-lg-3.col-md-4.col-sm-6.ellipsis(href='#{item.article_url}', target='_blank')
+                        img(src='#{item.article_img}')
+                        //- 标题
+                        h5 &nbsp;#{item.article_title}

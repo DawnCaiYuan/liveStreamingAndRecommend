@@ -16,6 +16,7 @@ const sendErrMailFn = require('./util/mail');
 const routes = require('./routes/index.route');
 const author = require('./routes/author.route');
 const visit = require('./routes/visit.route');
+const statistic = require('./routes/statistic.route');
 const mysession = require('./routes/session.route');
 const session = require('express-session');
 
@@ -61,6 +62,7 @@ app.use(session({
 
 app.use('/', routes);
 app.use('/author', author);
+app.use(statistic);
 app.use(visit);
 app.use(mysession);
 app.get('/login', function(req, res){
